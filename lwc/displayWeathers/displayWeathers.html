@@ -1,0 +1,53 @@
+<template>
+    <lightning-card title="Weather Data" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <!-- <template if:true={weatherData}>
+                <template for:each={weatherData} for:item="cityWeather">
+                    <p key={cityWeather.city}>
+                        <span><b>City:</b>{cityWeather.city}</span><br />
+                        <span><b>Weather:</b>{cityWeather.weather}</span><br />
+                    </p>
+                </template>
+            </template> -->
+
+            <!-- <template if:true={datesAndWeatherData}>
+                <template for:each={datesAndWeatherData} for:item="cityWeatherDate">
+                    <p key={cityWeatherDate.city}>
+                        <span><b>City:</b>{cityWeatherDate.city}</span><br />
+                        <span><b>Weather:</b>{cityWeatherDate.weatherCode}</span><br />
+                        <span><b>Date:</b>{cityWeatherDate.date}</span><br />
+                    </p>
+                </template>
+            </template> -->
+
+
+          
+            <lightning-input
+            label="Enter the Billing City"
+            type="text"
+            value={billingCity}
+            onchange={handleBillingCityChange}
+        ></lightning-input>
+
+            <template if:true={showButton}>
+                <lightning-button label="Show Weather Data" onclick={handleShowWeatherData}></lightning-button>
+            </template>
+            
+            <template if:true={showWeatherData}>
+                <template for:each={filteredData} for:item="cityWeatherDate">
+                    <p key={cityWeatherDate.city}>
+                        <span><b>City:</b>{cityWeatherDate.city}</span><br />
+                        <span><b>Weather:</b>{cityWeatherDate.weatherDescription}</span><br />
+                        <span><b>Date:</b>{cityWeatherDate.date}</span><br />
+                    </p>
+                </template>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-color_error">
+                    An error occurred while fetching the weather data.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
